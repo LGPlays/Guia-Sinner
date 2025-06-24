@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Troféus – Sinner: Sacrifice for Redemption</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #282828; /* Cinza escuro */
+            color: #f0f0f0; /* Cor do texto clara */
+            margin: 0;
+            padding: 0;
+            display: flex; /* Para posicionar o menu lateral e o conteúdo */
+            flex-direction: row; /* Padrão para telas maiores (sidebar e conteúdo lado a lado) */
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a1a; /* Um pouco mais escuro que o fundo principal */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            position: fixed; /* Fixa o menu na tela */
+            height: 100%;
+            overflow-y: auto; /* Adiciona scroll se o conteúdo for muito longo */
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar nav ul li a:hover {
+            color: #ffffff;
+        }
+
+        .sidebar nav ul li ul { /* Estilo para sublistas na sidebar */
+            margin-left: 20px; /* Adiciona indentação para subitens */
+            padding-top: 5px;
+        }
+
+        .sidebar nav ul li ul li {
+            margin-bottom: 5px; /* Espaçamento menor para subitens */
+        }
+
+
+        .content {
+            margin-left: 270px; /* Espaço para o menu lateral (250px de largura + 20px de padding) */
+            padding: 20px;
+            flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px; /* Adiciona um espaço no topo */
+        }
+
+        h1 {
+            color: #e0e0e0;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: #e0e0e0;
+            font-size: 2em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #666;
+            display: inline-block;
+            width: auto;
+        }
+
+        h3 {
+            color: #e0e0e0;
+            font-size: 1.5em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #555;
+            display: inline-block;
+            width: auto;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #ffffff; /* Volta a cor original do texto em negrito */
+        }
+
+        /* Cores para os tipos de troféus */
+        .bug-negativo {
+            color: #ff4d4d; /* Vermelho */
+            font-weight: bold;
+        }
+
+        .bug-positivo {
+            color: #4da6ff; /* Azul */
+            font-weight: bold;
+        }
+
+        .historia {
+            color: #9933ff; /* Roxo */
+            font-weight: bold;
+        }
+
+        .perdível {
+            color: #a0522d; /* Marrom */
+            font-weight: bold;
+        }
+
+        .limite-tempo {
+            color: #ff8c00; /* Laranja */
+            font-weight: bold;
+        }
+
+        /* Estilos para a lista dentro de listas */
+        ul ul {
+            list-style: circle;
+            margin-left: 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #444;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 60px;
+        }
+
+        /* Responsividade para telas menores */
+        @media screen and (max-width: 768px) {
+            body {
+                flex-direction: column; /* Em telas pequenas, a sidebar e o conteúdo ficam um abaixo do outro */
+            }
+
+            .sidebar {
+                position: static; /* Tira a sidebar da posição fixa */
+                width: 100%; /* Ocupa a largura total */
+                height: auto; /* Altura automática */
+                padding: 10px; /* Reduz o padding para economizar espaço */
+                box-shadow: none; /* Remove a sombra na sidebar */
+                border-bottom: 1px solid #444; /* Adiciona uma borda para separar do conteúdo */
+            }
+
+            .sidebar nav ul {
+                display: flex; /* Transforma a lista de navegação em uma linha flexível */
+                flex-wrap: wrap; /* Permite que os itens quebrem linha se não couberem */
+                justify-content: center; /* Centraliza os itens */
+            }
+
+            .sidebar nav ul li {
+                margin: 5px 10px; /* Espaçamento entre os itens do menu */
+            }
+
+            .sidebar nav ul li a {
+                padding: 3px 0; /* Ajusta o padding */
+                text-align: center;
+            }
+
+            .sidebar nav ul li ul { /* Esconde sublistas na sidebar para mobile */
+                display: none;
+            }
+
+            .content {
+                margin-left: 0; /* Remove a margem da sidebar */
+                padding: 15px; /* Ajusta o padding do conteúdo */
+            }
+
+            h1 {
+                font-size: 1.8em; /* Reduz o tamanho da fonte do título principal */
+            }
+
+            h2 {
+                font-size: 1.5em; /* Reduz o tamanho da fonte dos cabeçalhos de seção */
+                text-align: center; /* Centraliza os títulos de seção */
+                display: block; /* Garante que o border-bottom ocupe a largura total */
+            }
+
+            h3 {
+                font-size: 1.2em; /* Reduz o tamanho da fonte dos sub-cabeçalhos */
+                text-align: center; /* Centraliza os sub-títulos */
+                display: block; /* Garante que o border-bottom ocupe a largura total */
+            }
+
+            p, ul {
+                font-size: 0.95em; /* Ligeira redução no tamanho da fonte do texto e listas */
+            }
+
+            ul {
+                margin-left: 15px; /* Reduz a margem da lista */
+            }
+
+            ul ul {
+                margin-left: 25px; /* Reduz a margem das sublistas */
+            }
+        }
+
+        /* Para telas ainda menores (celulares) */
+        @media screen and (max-width: 480px) {
+            .sidebar nav ul li {
+                margin: 3px 5px; /* Reduz ainda mais o espaçamento entre itens do menu */
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            p, ul {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#explicando-o-jogo">Explicando o Jogo</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#dica-uma-zerada">Dica para fazer em uma zerada</a></li>
+                <li><a href="#dicas-gameplay">Dicas de Gameplay</a></li>
+                <li>
+                    <a href="#trofeus">Troféus</a>
+                    <ul>
+                        <li><a href="#trofeus-miscelanicos">Miscelânicos</a></li>
+                        <li><a href="#rhodes">Rhodes</a></li>
+                        <li><a href="#faiz-tilus">Faiz Tilus</a></li>
+                        <li><a href="#camber-luce">Camber Luce</a></li>
+                        <li><a href="#chanel">Chanel</a></li>
+                        <li><a href="#angronn">Angronn</a></li>
+                        <li><a href="#adam">Adam</a></li>
+                        <li><a href="#levin-undok">Levin Undok</a></li>
+                        <li><a href="#yordo">Yordo</a></li>
+                    </ul>
+                </li>
+                <li><a href="#consideracoes-finais">Considerações Finais</a></li>
+                <li><a href="#referencias">Referências</a></li>
+                <li><a href="#agradecimentos">Agradecimentos</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header>
+            <h1>Guia de Troféus – Sinner: Sacrifice for Redemption</h1>
+            <p>(UM GUIA DE MARCOS MIRANDA)</p>
+        </header>
+
+        <section class="overview">
+            <ul>
+                <li>Dificuldade estimada: 3/10 (bosses em si não são difíceis, mas alguns troféus dificultam de certa forma).</li>
+                <li>Tempo estimado: 7-10 horas (possível fazer em menos tempo).</li>
+                <li>Zeradas necessárias: 2.</li>
+                <li>Troféus: 61 (1 de platina 🏆, 1 de ouro 🥇, 1 de prata 🥈 e 58 troféus de bronze 🥉. Não possui troféus online).</li>
+                <li>Troféus bugados: 4 (<span class="bug-negativo">Hex Proof</span>, <span class="bug-negativo">Untemptable</span>, <span class="bug-positivo">Aim for the King</span> e <span class="bug-positivo">Lust Denied</span>).</li>
+                <li>Troféus perdíveis: Em teoria, todos os troféus de miscelânea são perdíveis. Isso porque, uma vez que todos os sacrifícios estejam ativos e você tenha derrotado todos os sete chefes iniciais, o oitavo chefe, Adam é liberado. A partir desse ponto, não é possível repetir nenhuma batalha, o que impede realizar esses troféus posteriormente. Além disso, todos os troféus relacionados ao chefe Adam também são perdíveis, já que derrotá-lo encerra o save e finaliza o jogo, sendo necessário iniciar uma nova run para tentar novamente.</li>
+            </ul>
+        </section>
+
+        <section id="introducao">
+            <h2>Introdução</h2>
+            <p>Bem vindos ao guia de troféus do jogo Sinner: Sacrifice for Redemption. Desde já deixo avisado que este é o primeiro guia que faço, portanto, ao encontrarem algum erro ou forma de realizar algum ou mais troféus de forma mais fácil e clara, sintam-se livres para avisar que vamos alterando o guia juntos.</p>
+            <p>Sinner: Sacrifice for Redemption é um Souls-Like, desenvolvido pela DARK STAR onde seu objetivo é enfrentar oito bosses, sete deles inspirados nos sete pecados capitais, banindo ou redimindo-os.</p>
+        </section>
+
+        <section id="explicando-o-jogo">
+            <h2>Explicando o jogo</h2>
+            <p>Seu arsenal consiste no seguinte:</p>
+            <ul>
+                <li><strong>Espada e Escudo:</strong> Ideal para agressividade e mais ataques.</li>
+                <li><strong>Espada grande:</strong> maior dano porém ataques mais lentos que consomem mais estamina</li>
+                <li><strong>Poções de Cura:</strong> Restaura sua vida ao longo do tempo, inicialmente o personagem carrega 7 delas.</li>
+                <li><strong>Lanças Elétricas:</strong> Projéteis úteis para combate a distância. Você inicia com 20 deles.</li>
+                <li><strong>Urnas de Fogo:</strong> Lançáveis pequenos que aplicam dano de fogo em área. São 7 no início.</li>
+                <li><strong>Papel de Fogo:</strong> Aplica dano de fogo na sua arma aumentando o dano da mesma, porém diminui a sua vida durante a duração. Dura 20 segundos e o personagem inicia com 2 no inventário.</li>
+            </ul>
+            <p>O jogo como mencionado acima consiste de 8 chefes, 7 deles podendo ser enfrentados na ordem que o jogador desejar. Dada essa natureza livre do jogo, não irei lhe dar um caminho certo para seguir (apesar de dizer o meu), mas sim explicar cada mecânica e troféu para que você jogador possa adaptar e seguir o caminho que funcionar melhor para você:</p>
+            <p><strong>Minha rota:</strong> Chanel → Levin Undok → Camber Luce → Angronn → Rhodes → Yordo → Faiz Tilus</p>
+            <p>Neste jogo, existe uma mecânica chamada <strong>Sacrifícios</strong>, ativada antes das lutas contra os chefes. Cada sacrifício enfraquece seu personagem de alguma forma. Para desbloquear o chefe final, é obrigatório ativar todos os 7 sacrifícios e derrotar os 7 chefes correspondentes.</p>
+            <p>É possível remover um sacrifício interagindo com a lápide do respectivo chefe, o que faz com que ele ressuscite e possa ser enfrentado novamente. No entanto, atenção: após ativar todos os 7 sacrifícios e eliminar os 7 chefes, não será mais possível desativar nenhum sacrifício. Isso impede que você repita os confrontos, o que pode impossibilita a obtenção de troféus de miscelânea não conquistados.</p>
+            <p>Abaixo estão listados os nomes dos chefes e os efeitos negativos que cada sacrifício causa no personagem:</p>
+            <ul>
+                <li><strong>Angronn:</strong> Bloquear um ataque consome mais estamina, e você perde a sua regeneração de vida passiva.</li>
+                <li><strong>Chanel:</strong> Seu escudo se quebra quando toda a estamina acaba ao se defender.</li>
+                <li><strong>Faiz Tilus:</strong> Reduz sua vida e estamina total em 25%</li>
+                <li><strong>Levin Undok:</strong> Reduz a capacidade de utilizáveis. (Voce passa a carregar 10 de 20 lanças elétricas, 3 de 7 urnas de fogo e 0 de 2 papeis de fogo)</li>
+                <li><strong>Yordo:</strong> O personagem se cansa e fica imóvel por alguns segundos quando a estamina acaba.</li>
+                <li><strong>Rhodes:</strong> Reduz o dano de ataque.</li>
+                <li><strong>Camber Luce:</strong> Faz com que você carregue 2 poçoes a menos(5 de 7) e reduz a velocidade de cura das poções.</li>
+            </ul>
+            <p>Adicionalmente, ao final de todas as lutas (com excessão da batalha com o Adam), o jogador tem a opção de Redimir o pecado(o chefe) com o **L2**, aumentando sua vida total, ou banir o pecado, atacando o chefe repetidamente após o mesmo ter sido derrotado.</p>
+            <p><strong>REFORÇANDO O AVISO:</strong> Uma vez banido ou redimido todos os pecados (chefes) somente a luta com o Adam estará disponível, impossibilitando remover qualquer sacrifício e repetindo as lutas, logo impossibilitando de fazer troféus que não foram conquistados.</p>
+        </section>
+
+        <section id="roadmap">
+            <h2>Roadmap</h2>
+            <h3>Estágio 1:</h3>
+            <p>Nesse estágio você deve zerar o jogo banindo ou redimindo todos os chefes. Será seu estágio de descoberta onde você deverá jogar o jogo no seu ritmo, aprendendo como enfrentar cada chefe, e descobrindo a rota que funcione melhor para você. Durante esse estágio de gameplay é muito importante realizar todos os troféus específicos de chefe, pois encurtará sua segunda jogatina. Na seção “TROFÉUS” serão explicados, por chefes, como fazer os troféus específicos de cada um.</p>
+            <p><strong>AVISO:</strong> Garanta pegar o troféu **Immolated (Bronze)** nessa zerada, pois esse troféu precisa ser feito na forma normal do boss ADAM. Para acessar a forma normal dele, você precisa banir ou redimir todos os chefes. Como é uma zerada voltada mais a descoberta, facilidade de obter os troféus de chefes, e voltada também e esse troféu Immolated, recomendo redimir todos os chefes, pois, a cada chefe redimido, sua vida aumenta, facilitando a obtenção de troféus.</p>
+            <p><strong>AVISO 2:</strong> Como dito anteriormente nesse guia, uma vez banido ou redimido todos os pecados (chefes) somente a luta com o Adam estará disponível, impossibilitando remover qualquer sacrifício e repetindo as lutas, logo impossibilitando de fazer troféus que não foram conquistados. Portanto, antes de matar o sétimo boss, garanta que foram pegos todos os troféus específicos. Uma dica que pode ajudar é, caso falte somente um dos 7 chefes para fazer os troféus, você pode retirar o sacrifíco de um chefe qualquer, assim, podendo repetir o chefe que faltam troféus o quanto você desejar.</p>
+            <h3>Estágio 2:</h3>
+            <p>Esse estágio não será muito longo, visto que você já deve ter feito todos os troféus possíveis e está familiarizado com o jogo. Nesse estágio iremos focar em pegar o troféu verdadeiro do jogo, que consiste em derrotar o chefe Adam em sua forma verdadeira.</p>
+            <p>Para isso acontecer, dois requisitos devem ser realizados:</p>
+            <ol>
+                <li>Redimir o chefe CHANEL.</li>
+                <li>Banir todos os demais chefes.</li>
+            </ol>
+            <p>Fique a vontade para seguir a minha rota, ou então a sua, caso tenha desenvolvido uma.</p>
+            <p>Ao cumprir com os requisitos, um coração azul e branco irá aparecer no centro de onde ficam os altares (diferente da outra zerada onde o coração será vermelho alaranjado), isso significa que você conseguiu atingir o final verdadeiro. Nessa forma, Adam aplicará mais dano ao jogador, em contrapartida, todo golpe acertado em Adam recupera um pouco de vida. Meus parabéns, se você seguiu o guia até aqui, seu jogo estará platinado.</p>
+            <h3>Estágio 3:</h3>
+            <p>Esse estágio é completamente opcional e deve ser combinado com a sua primeira zerada. Muitos troféus podem ser facilmente perdidos dada suas naturezas específicas, mas, tenha em mente, como dito anteriormente, que você pode remover os sacrifícios a praticamente qualquer momento, permitindo repetir as lutas. Dito isso, se por algum motivo, faltou algum troféu, sinta-se a vontade para obtê-lo nesse estágio.</p>
+        </section>
+
+        <section id="dica-uma-zerada">
+            <h2>Dica para fazer em uma zerada</h2>
+            <p>Para platinar o game em uma zerada somente, caso desejar, você pode optar em deixar a chefe Chanel por último, fazer um save na nuvem, e mata-la banindo ela (e todos os outros chefes), para acessar um final, depois voltar o save, matar ela novamente mas dessa vez a redimindo para acessar outro final. Isso irá poupar que o jogador faça uma segunda run e tenha que enfrentar todos os outros chefes novamente, tendo que repetir somente ela e o Adam. Segue o passo a passo:</p>
+            <ul>
+                <li>Fazer os troféus da Chanel</li>
+                <li>Voltar o sacrifício dela</li>
+                <li>Fazer todos os outros troféus de chefe e ao matá-los em definitivo, banir eles</li>
+                <li>Salvar na Nuvem</li>
+                <li>Matar Chanel e banir ela para acessar o Adam em sua forma comum e pegar o troféu Immolated</li>
+                <li>Após matar o Adam, baixar o save da nuvem no console</li>
+                <li>Matar a Chanel novamente e redimir ela no fim da luta para acessar Adam em sua forma verdadeira para o troféu do final verdadeiro</li>
+            </ul>
+        </section>
+
+        <section id="dicas-gameplay">
+            <h2>Algumas dicas de gameplay</h2>
+            <ul>
+                <li>Se familiarize com os sacrifícios e aprenda a jogar com eles. O jogo fica mais difícil conforme você progride, uma vez que cada sacrifício aplica um debuff no jogador.</li>
+                <li>Locar a mira com o analógico **R3** ajuda demais.</li>
+                <li>A espada pesada para mim foi a melhor arma do jogo para matar os chefes, caso queira experimentar fique a vontade. Ela aplica um dano maior, porém consome mais estamina. É possível aplicar o parry com essa arma.</li>
+                <li>Não esqueça de usar as suas lanças elétricas, são ótimas para danos a distância e ajudam muito em alguns chefes.</li>
+                <li>Analise bem os ataques de cada chefe, pois as vezes, correr é muito melhor e mais seguro do que rolar.</li>
+                <li>Nunca esgote sua estamina por completo, deixe sempre um restinho para desviar de possíveis ataques ou correr. Essa dica é fundamental pois como dito acima, um dos debuffs é a paralisia temporária do personagem após ser esgotada a estamina.</li>
+                <li>Aprenda a usar o parry. Eu sinceramente só usei em dois chefes pois não vi a necessidade dessa mecânica antes disso, porém, no chefe Yordo, e no chefe Adam essa mecânica ajuda e muito. Você consegue dar o parry ao apertar o **L1** no momento certo do ataque do chefe. Fica o aviso de que, no chefe Adam, durante a fase onde o mesmo empunha a Espada Grande, eu não consegui aplicar o parry, portanto nessa fase não sei se é possível ou não.</li>
+            </ul>
+        </section>
+
+        <section id="trofeus">
+            <h2>Troféus</h2>
+
+            <section id="trofeus-miscelanicos">
+                <h3>Troféus miscelânicos</h3>
+                <ul>
+                    <li><strong>Sinner</strong> (Platina): Obtenha todos os troféus</li>
+                    <li><strong>Rush and Slash</strong> (Bronze): Acerte um ataque correndo
+                        <ul>
+                            <li>Muito simples, aperte o **Quadrado** ou **Triângulo** enquanto corre com o **R2**;</li>
+                        </ul>
+                    </li>
+                    <li><strong>Split Second</strong> (Bronze): Acerte um parry
+                        <ul>
+                            <li>Você consegue acertar um parry ao apertar **L1** no timing certo de um ataque. Pode ser feito com qualquer arma.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Sacrificed</strong> (Bronze): Faça um sacrifício
+                        <ul>
+                            <li>Esse troféu será feito naturalmente, uma vez que é necessário para enfrentar os chefes.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Redeemed</strong> (Bronze): Redima um pecado
+                        <ul>
+                            <li>Após derrotar um chefe, aperte o **L2** para realizar essa ação. Redimir um pecado irá aumentar a sua vida para o resto da jogatina.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Banished</strong> (Bronze): Banir um Pecado
+                        <ul>
+                            <li>Ao derrotar um chefe, continue batendo nele até o mesmo desaparecer. Banir um pecado não tem efeitos nos stats do personagem.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Skilled</strong> (Bronze): Acertar 10 ataques em sequência
+                        <ul>
+                            <li>Aqui você precisa atacar dez vezes em sequência sem esgotar a barra de estamina. É fundamental que o sacrifício do boss Faiz Tilus não esteja ativo, pois o mesmo reduz a vida e estamina em 25%. Você consegue fazer esse troféu facilmente na área principal, apertando o **Quadrado** para atacar, esperando um segundo para a estamina encher um pouco a atacando de novo. Faça isso dez vezes e o troféu é seu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Triumph</strong> (Bronze): Derrote um inimigo
+                        <ul>
+                            <li>Esse troféu é muito fácil de ser obtido, pois, antes de antes de acessar a área principal, você enfrentará um fantasma em um corredor. Alternativamente, esse troféu pode ser obtido em qualquer chefe que sumone minions, como Faiz Tilus, Rhodes e Yordo.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Fallen</strong> (Bronze): Morra de queda
+                        <ul>
+                            <li>Simplesmente se jogue de qualquer arena.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Incendiary</strong> (Bronze): Seja sacrificado para a chama
+                        <ul>
+                            <li>O Papel de Fogo consome sua vida continuamente enquanto ativo, e você deve morrer para isso. Faça esse troféu antes de matar o chefe Levin Undok, já que o sacrifício dela remove todos os seus Papéis de Fogo.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Déjà vu</strong> (Bronze): Fale com a Chanel
+                        <ul>
+                            <li>Após redimir a Chanel (necessário para o final verdadeiro), ela aparecerá na área principal como um fantasma. Interaja com ela com o **L2**, e ela irá proferir alguns diálogos, desbloqueando o troféu.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="rhodes">
+                <h3>Rhodes</h3>
+                <ul>
+                    <li><strong>Stepping Stone</strong> (Bronze): Morra para a aterrisagem do Rhodes
+                        <ul>
+                            <li>Rhodes sempre iniciará as batalhas pulando no centro da arena. Para obter esse troféu, corra para o centro dela, e espere ele aterrissar. Você morrerá imediatamente, recebendo o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>K.O</strong> (Bronze): Seja arremessado para fora da arena por Rhodes.
+                        <ul>
+                            <li>Um dos ataques do Rhodes, é uma corrida com o escudo que, ao te acertar, te joga pra longe. Para obter esse troféu, simplesmente seja arremessado para fora da arena, então. Ao ver Rhodes colocar o escudo na frente e se preparar, fique na borda da arena e espere ser arremessado.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Nimble</strong> (Bronze): Desvie da Corrida com Escudo
+                        <ul>
+                            <li>O oposto do troféu anterior. Sempre que Rhodes ficar atrás de seu escudo, esteja preparado para desviar.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ride the Wave</strong> (Bronze): Desvie das ondas de choque do Rhodes
+                        <ul>
+                            <li>Rhodes tem dois ataque de ondas de choque. Um que consiste em uma série de ondas áreas, e um ataque de onda no chão. Desvie de qualquer um.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Leg Hugger</strong> (Bronze): Esconda-se nas pernas do Rhodes durante a luta inteira.
+                        <ul>
+                            <li>Autoexplicativo. Você deve permanecer ao redor das pernas dele durante a batalha inteira. Você irá notar que em alguns momentos, Rhodes irá se jogar para trás ou então “rushar” com o escudo, não se preocupe pois isso não anula o troféu, contanto que você corra para perto dele o mais rápido possível. Há dois ataque que você deve prestar atenção. Em um, Rhodes invoca uns projéteis do céu, mas é somente rodear o chefe que esses projéteis não devem lhe acertar. No outro ataque, Rhodes cai no chão e invoca seus minions. Ficar colado ao Rhodes nesse ataque lhe aplica dano, nessa situação, você deve se afastar um pouco para que não tome dano, e atacá-lo com as lanças elétricas.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Friendly Fire</strong> (Bronze): Use os ataques do Rhodes para matar 10 Guerreiros.
+                        <ul>
+                            <li>Duas vezes durante a batalha, Rhodes irá cair no chão e invocar 6 minions(totalizando 12). Quando isso acontecer, afaste-se do chefe e fique rodeando os minions, o que irá fazer com que os ataques do chefe os atinjam. Matando 10 deles, o troféu é seu. Nota: As ondas de Choque Aéreas funcionam melhor para esse troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Proud Rhodes</strong> (Bronze) - <span class="historia">HISTÓRIA</span>: Derrote o Rhodes
+                        <ul>
+                            <li>Você pode combinar esse troféu com o troféu Leg Hugger, uma vez que é a maioria dos ataques serão concentrados nas pernas do chefe. Ao fazer os demais troféus, provavelmente você estará familiarizado com os ataques dele, portanto essa luta não será um problema.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="faiz-tilus">
+                <h3>Faiz Tilus</h3>
+                <ul>
+                    <li><strong>Cursed</strong> (Bronze): Morra para o Ritual da Maldição do Faiz Tilus
+                        <ul>
+                            <li>Quando Faiz Tilus chegar a aproximadamente 30%-20% de vida, ele irá subir em um tronco e invocar alguns clones. Durante esse ataque, uma barra de maldição irá subir lentamente. Quando a barra se completar, o personagem irá morrer, liberando o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Poisoned</strong> (Bronze): Morra pelo envenenamento do Faiz Tilus
+                        <ul>
+                            <li>Alguns ataques do chefe irão envenenar o personagem, como as lesmas e flores invocadas, por exemplo, e até mesmo bater no chefe solta uma poça de veneno. Semelhante à maldição, ao ser envenenado, uma barra irá subir lentamente, e quando completa, irá consumir a vida do personagem aos poucos. Simplesmente deixe o personagem morrer para esse efeito para obter o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Fallen Short</strong> (Bronze): Morra para o Faiz Tilus depois de ver todos os seus golpes
+                        <ul>
+                            <li>Autoexplicativo, aqui segue uma lista de todos os 11 golpes do chefe:</li>
+                            <ul>
+                                <li>Bola de Névoa: Uma bola de névoa que segue o jogador, podendo ser eliminada ao bloquear com o escudo.</li>
+                                <li>Olhos de Fogo: Olhos de Fogo que podem ser evitados ao rolar ou esconder-se atrás de pilares na arena.</li>
+                                <li>Mísseis de Veneno: Projéteis de veneno teleguiados, também possível de evitar ficando atrás de pilares.</li>
+                                <li>Onda de Veneno: Semelhante ao ataque anterior, porém em maior escala, em forma de uma saraivada horizontal. Novamente, ficando atrás de pilares é possível evitar receber dano.</li>
+                                <li>Flores de Veneno: Flores que surgem do chão e explodem liberando nuvens de veneno. Movimentar-se é suficiente para evitar dano.</li>
+                                <li>Lesmas: Lesmas caem do céu, atacando o jogador e explodindo, infligindo envenenamento. É possível mata-las ou desviar da explosão.</li>
+                                <li>Golpe de Foice: Um amplo golpe de foice na frente do chefe.</li>
+                                <li>Arrancada de Foice: Um golpe rápido de cima para baixo, justificando o nome Arrancada.</li>
+                                <li>Arrasto da Foice: Golpe que normalmente vem após a Arrancada da Foice.</li>
+                                <li>Nuvem Venenosa: Uma nuvem de cobre grande parte da arena durante o primeiro ritual – quando o chefe atinge 50% de vida.</li>
+                                <li>Maldição: Como visto no Troféu Cursed, irá ocorrer automaticamente quando o chefe atingir um terço de vida restante.</li>
+                            </ul>
+                            <li>AVISO: Não sei dizer ao certo se este troféu é <span class="bug-negativo">BUGADO</span>, mas precisei de várias tentativas para consegui-lo. O que funcionou comigo foi evitar morrer para a Maldição (último golpe — matar os clones encerra a Maldição), ficar completamente envenenado, me curar em seguida (basta rolar na poça d’água presente na arena) e então morrer para qualquer outro golpe. Caso consiga o troféu de outra forma, sinta-se à vontade para compartilhar!</li>
+                        </ul>
+                    </li>
+                    <li><strong>Purified</strong> (Bronze): Use água para se limpar do Envenenamento
+                        <ul>
+                            <li>Dentro da arena tem uma poça d’água. Quando a barra de envenenamento se completar e o personagem começar a receber dano, vá até a poça e role na água para se curar do envenenamento e receber o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Hex Proof</strong> (Bronze) - <span class="bug-negativo">BUGADO</span>: Evite o Ritual Hex do Faiz Tilus
+                        <ul>
+                            <li>O Ritual Rex marca o início da segunda fase, onde ao atingir 50% de vida, o chefe se teleporta para cima de um tronco, invoca a Nuvem Venenosa e lança a maioria de seus ataques de uma vez. Esse troféu, porém é bugado, abaixo segue três métodos que podem lhe ajudar a desbloqueá-lo.</li>
+                            <ul>
+                                <li>Método 1 (O método original): este método consiste em fazer o troféu como originalmente desenvolvido pelos devs do jogo – Não tomar nenhum dano durante o Ritual Hex inteiro. O segredo é correr para longe da Nuvem Venenosa, e desviar de todas as flores e lesmas que serão invocadas. Projéteis como os Olhos de Fogo, Mísseis de Veneno e Ondas de Veneno serão invocados também, sendo necessário se esconder atrás de pilares. Se esse método não funcionar mesmo após algumas tentativas, tente o segundo.</li>
+                                <li>Método 2 (no caso de o primeiro não funcionar): Esse método consiste em acertar uma lança elétrica no chefe durante o Ritual Hex. Isso não é muito fácil pois durante esse ataque e, devido a distancia entre o personagem e o chefe graças à Nuvem Venenosa, não é possível locar a mira. Sua melhor chance seria subir em algum telhado, tentar alinhar e torcer para acertar o chefe, a janela de oportunidade aqui será curta, uma vez que flores e lesmas irão ser invocadas no telhado também.</li>
+                                <li>Método 3 (o que funcionou para mim): Esse método consiste em deletar o jogo, baixar novamente e repetir o método 1.</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li><strong>Cleansed by Fire</strong> (Bronze): Derrote Faiz Tilus com Fogo
+                        <ul>
+                            <li>Embora a descrição do troféu dê a entender que o ultimo golpe seja com fogo, o que você precisa fazer é aplicar dano de fogo em cerca de 75% da vida do chefe, usando as Urnas e Papéis de Fogo. Por garantia, além dos 75% de ano, faça com que o último golpe seja de fogo também.</li>
+                            <li>AVISO: Não faça o sacrifício para o chefe Levin Undok antes de fazer esse troféu, uma vez que o sacrifício dele reduz seus Papéis de Fogo para 0 e Urnas para 3.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Greedy Faiz Tilus</strong> (Bronze) - <span class="historia">HISTÓRIA</span>: Derrote o Faiz Tilus
+                        <ul>
+                            <li>Após fazer os demais troféus, principalmente o Fallen Short, já estará familiarizado com o chefe e seus ataques, portanto essa luta não deverá ser um problema. Para mim, é o chefe mais fácil a ser enfrentado, porém o sacrifício dele pode complicar alguns chefes e troféus, portanto, ao zerar minha recomendação é que o deixe por último. Lembre-se que para interromper a maldição, deve-se destruir os clones invocados.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="camber-luce">
+                <h3>Camber Luce</h3>
+                <ul>
+                    <li><strong>Devoured</strong> (Bronze): Seja devorado por Camber Luce
+                        <ul>
+                            <li>Ocasionalmente durante a luta, o chefe abrirá a boca e tentará mastigar o personagem em um ataque que causa cerca de 75% de dano. Certifique-se de estar com a vida baixa e deixe que ele complete o ataque quando isso acontecer. Se morrer por esse golpe, o troféu será seu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Six Feet Ice Under</strong> (Bronze): Caia dentro do Mar Congelado enquanto enfrenta Camber Luce
+                        <ul>
+                            <li>Durante a batalha, o chefe fará alguns ataques que quebram o gelo, abrindo buracos. Simplesmente se jogue em um desses buracos para morrer e desbloquear o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Speed Over Strenght</strong> (Bronze) - <span class="limite-tempo">LIMITE DE TEMPO</span>: Derrote Camber Luce muito rápido.
+                        <ul>
+                            <li>Aqui você deve derrotar o chefe em menos de dois minutos. A melhor arma para esse troféu é a Espada com Escudo, pois apesar do dano ser menor que a Espada Grande, permite mais ataques. A estratégia nessa luta é tentar ficar ao máximo nas costas do chefe, desviando dos golpes necessários e aproveitando nas franquezas que serão descritas em troféus abaixo deste. Ao atingir 50% de vida, o chefe começará a rolar ocasionalmente, aqui, a estratégia é ir para algum pilar de gelo, e fazer com que o chefe acerte o pilar, quebrando-o e ficando atordoado por um tempo. O chefe também irá se curar (sua boca brilhará verde) então é só correr até ele e continuar batendo. Boa sorte.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Stomach Settler</strong> (Bronze): Derrote Camber Luce sem aproveitar-se de suas fraquezas.
+                        <ul>
+                            <li>A estratégia aqui é se manter nas costas do chefe e adotar uma postura agressiva, evitando atacar em momentos de fraqueza. O troféu exige que você siga as seguintes condições:</li>
+                            <ul>
+                                <li>Não acertar o chefe durante e após ele cuspir a gosma roxa.</li>
+                                <li>Não acertar o chefe após ele atingir um pilar de gelo e ficar atordoado.</li>
+                                <li>Não acertar o chefe enquanto ele se cura. (brilho verde na boca)</li>
+                                <li>Não acertar o chefe quanto ele ficar atordoado e expelir um sangue preto.</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li><strong>Abdominal Trauma</strong> (Bronze): Derrotar Camber Luce se aproveitando intensamente de suas fraquezas
+                        <ul>
+                            <li>Exatamente o contrário do troféu Stomach Settler, e você pode inclusive combiná-lo com o troféu Speed Over Strenght se quiser. Explorar as fraquezas do chefe se refere ao seguinte:</li>
+                            <ul>
+                                <li>Acertar o chefe durante e após ele cuspir a gosma roxa.</li>
+                                <li>Acertar o chefe após ele atingir um pilar de gelo e ficar atordoado.</li>
+                                <li>Acertar o chefe enquanto ele se cura. (brilho verde na boca)</li>
+                                <li>Acertar o chefe quanto ele ficar atordoado e expelir um sangue preto.</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li><strong>Gluttonous Camber Luce</strong> (Bronze) - <span class="historia">HISTÓRIA</span>: Derrote Camber Luce
+                        <ul>
+                            <li>Simplesmente derrote o chefe. Você já deve ter feito esse troféu se fez uns dos três que pedem para derrota-lo em condições específicas. Siga as dicas dos outros troféus e tome cuidado com a arena, pois ela se quebra mediante alguns ataques do chefe.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="chanel">
+                <h3>Chanel</h3>
+                <ul>
+                    <li><strong>Deep Freeze</strong> (Bronze): Congele até a morte enquanto enfrenta Chanel
+                        <ul>
+                            <li>A maioria dos ataques da Chanel preenche um medidor de congelamento que, ao ser completamente preenchido, congela o jogador. Para receber este troféu de bronze, basta deixá-la matá-lo enquanto estiver congelado.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Chilled to the Bone</strong> (Bronze): Vivencie o verdadeiro poder de Chanel
+                        <ul>
+                            <li>Este é um troféu automático, obtido na primeira vez em que você atinge a segunda fase da chefe. Ao alcançar metade da vida, Chanel recuará e se envolverá em uma nuvem de gelo, marcando o início desta nova fase.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tangled</strong> (Bronze): Sofra dano das plantas aquáticas durante a luta contra Chanel
+                        <ul>
+                            <li>Espalhadas pela arena, você verá várias plantas que se assemelham a tentáculos. Para obter este troféu, dê um golpe em uma delas e fique parado próximo para ser atingido. Atenção: Chanel pode forçá-lo a se mover durante a luta, o que pode atrapalhar a obtenção deste troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Lust Denied</strong> (Bronze) - <span class="bug-positivo">BUGADO</span>: Contra-ataque (Parry) os ataques da Chanel três vezes seguida
+                        <ul>
+                            <li>Este troféu está bugado, porém de forma positiva, fazendo com que sua obtenção seja muito mais fácil. O que você irá fazer é desviar seguidamente de três ataques – que por alguma razão contaram como parries – e o troféu será desbloqueado.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Untemptable</strong> (Bronze) - <span class="bug-negativo">BUGADO</span>: Derrote Chanel com elegância
+                        <ul>
+                            <li>Muitos reportam esse troféu como bugado e as condições para desbloqueá-lo não são muito claras, e a descrição do troféu não ajuda muito, sendo muito vaga. Porém, como mencionado no guia do PSNProfiles e que funcionou para mim as condições ideais para obter esse troféu são:</li>
+                            <ul>
+                                <li>Derrote Chanel rapidamente – Em torno de 1 minuto e 30 segundos no máximo.</li>
+                                <li>Mate-a antes que ela se transforme em um verme.</li>
+                                <li>Não utilize poções de cura – Recomendável não fazer o sacrifício do chefe Angronn, pois o mesmo tira sua habilidade de cura passiva.</li>
+                                <li>Banir o chefe do final da luta</li>
+                            </ul>
+                            <li>Avisos importantes:</li>
+                            <ul>
+                                <li>AVISO: Banir a Chanel impossibilitará de obter o troféu Exalted – que consiste em derrotar o Adam em sua forma mais poderosa – portanto não faça esse troféu na segunda run, ou, se fizer, remova o sacrifício e enfrente-a novamente para redimi-la no final da luta.</li>
+                                <li>AVISO 2: Lembre-se que você pode enfrentar o chefe quantas vezes quiser, já que pode remover o sacrifício, o que permitirá repetir a luta, contanto que não tenha feito todos os sacrifícios e que esse seja o ultimo chefe morto antes do Adam.</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li><strong>Lusty Chanel</strong> (Bronze) - <span class="historia">HISTÓRIA</span>: Derrote Chanel
+                        <ul>
+                            <li>Em minha opinião, Chanel é o chefe mais difícil por ser mais rápida que os demais, e bem agressiva. Seus ataques com flechas podem deixar você preso em uma espécie de stun-lock e são devastadores. Minha dica para enfrentá-la é utilizar a Espada Grande, atacando sempre que ver brechas, mas deixando estamina restante para desviar caso necessário. Os ataques com flechas são facilmente evitados ao correr pela arena. Ao atingir 50% de vida, Chanel irá iniciar a segunda fase, ficando um pouco agressiva e fazendo alguns ataques a mais. A dica crucial aqui é que, sempre que ver Chanel mirando para cima, atinja-a com uma lança elétrica, isso irá interromper esse ataque, que, para mim é o pior, pois caso não desviado corretamente, o personagem entra em stun-lock devido às flechas e é praticamente morte certa. Adicionalmente, ao atingir entre 20% a 15% de vida, Chanel iniciará sua transformação em verme, causando muito mais dano e exibindo padrões de ataque ainda mais erráticos, e sua vida é restaurada. Essa fase pode ser evitada matando-a antes que se transforme.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="angronn">
+                <h3>Angronn</h3>
+                <ul>
+                    <li><strong>Titan’s Grasp</strong> (Bronze): Seja esmagado pelo aperto de Angronn
+                        <ul>
+                            <li>Fique atento a qualquer forma de animação de agarrão que Angronn realizar e deixe-se ser atingido por este ataque - ele causa cerca de 75-80% da sua saúde total, então deixe-se ser agarrado sempre que sua vida estiver abaixo desse limite para conseguir o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Coward’s Fate</strong> (Bronze): Enfureça Angronn com sua covardia e faça-o destruir a arena
+                        <ul>
+                            <li>Quando a batalha começar, corra imediatamente para o fim da arena. Isso fará com que o chefe fique furioso e comece a destruí-la por inteiro, até que o troféu caia.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Fearless</strong> (Bronze): Lute contra Angronn cara a cara
+                        <ul>
+                            <li>Para pegar esse troféu você deve derrotar o chefe após ele destruir a arena inteira. Provavelmente pegará esse troféu ao mata-lo normalmente.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Wrathful Angronn</strong> (Bronze) - <span class="historia">HISTÓRIA</span>: Derrote Angronn
+                        <ul>
+                            <li>Não há muito mistério aqui. Os ataques do chefe são fáceis de desviar e as janelas para acertá-lo são grandes. O maior perigo será a arena, que será destruída aos poucos. Às vezes, o chefe também lança lanças na arena, mas elas podem ser quebradas e são fáceis de evitar. Além disso, ele sumona minions de fogo que explodem ao tentar atingir o jogador, mas são facilmente evitados. No geral, é um chefe bem tranquilo e não apresenta grande desafio.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="adam">
+                <h3>Adam</h3>
+                <ul>
+                    <li><strong>Weakness</strong> (Bronze) - <span class="perdível">PERDÍVEL</span>: Morra para o ataque crítico do Adam
+                        <ul>
+                            <li>Aqui você deve morrer para um reposte do Adam. Em certo momento da luta, os olhos de Adam brilharão, expelindo pequenas chamas. Nesse momento, tente atacá-lo, ele irá lhe aplicar um Parry, e então um ataque crítico – similar ao visceral do Bloodborne – que causa uma quantidade ridícula de dano. Por garantia, apesar de o dano ser alto, esteja com a vida baixa ao tentar esse troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Immolated</strong> (Bronze) - <span class="perdível">PERDÍVEL</span>: Morra para o ataque de imolação de Adam
+                        <ul>
+                            <li>Em teoria, esse troféu só pode ser feito ao enfrentar Adam em sua forma normal – Banir ou Redimir todos os Pecados (Chefes). Quando Adam atingir 50% de sua vida, ele será consumido por chamas, e sua armadura começa a brilhar. O brilho ficará mais intenso até a armadura explodir. Para pegar o troféu você precisa morrer para essa explosão, portanto tente rodear o chefe e esteja com a vida baixa, pois o alcance da explosão é muito pequeno e também não dá muito dano.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Frustration Leads to Anger</strong> (Bronze) - <span class="perdível">PERDÍVEL</span>: Seja arremessado para o Abismo repetidamente por Adam
+                        <ul>
+                            <li>Você simplesmente precisa ser jogado para trás pelo ataque de escudo/investida de Adam várias vezes (geralmente duas ou três), até que o troféu apareça.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Exalted</strong> (Ouro) - <span class="perdível">PERDÍVEL</span>: Derrote Adam em sua forma mais poderosa
+                        <ul>
+                            <li>Nessa forma, Adam é mais forte e mais agressivo, mas não muito mais difícil que sua forma normal. Nessa forma, cada ataque que você acertar em Adam cura um pouco de sua vida, o que vai ajudar muito já que nessa run, sua vida estará relativamente baixa. Lembre-se que para enfrenta-lo em sua forma verdadeira você deve cumprir com o tais requisitos:</li>
+                            <ol>
+                                <li>Redimir a Chanel</li>
+                                <li>Banir todos os outros Pecados (Chefes)</li>
+                            </ol>
+                        </ul>
+                    </li>
+                    <li><strong>Critical Strike</strong> (Bronze) - <span class="perdível">PERDÍVEL</span>: Acerte um ataque crítico em Adam
+                        <ul>
+                            <li>Em resumo, basta acertar um Parry no chefe e atacá-lo em seguida. O primeiro ataque de Adam – e a primeira fase dele – é perfeito para isso, pois a janela de oportunidade é ideal. Lembre-se que, para dar o Parry, você deve apertar o **L1** no momento certo. Ao apertar **Quadrado** logo após o Parry, uma animação será feita – similar ao visceral de Bloodborne. Se tudo der certo, o troféu será seu. Uma dica é "macetar" o **Quadrado** após o Parry para garantir que a animação de crítico será executada.</li>
+                        </ul>
+                    </li>
+                    <li><strong>The Forsaken</strong> (Prata) - <span class="historia">HISTÓRIA</span>: Derrote Adam
+                        <ul>
+                            <li>Adam é o ultimo chefe, e é liberado após banir ou redimir todos os outros. Você encontrará um chefe com um conjunto de habilidades bastante familiar, como parries, investidas de escudo, lanças elétricas, e golpes com Espada Grande. Embora não seja o desafio supremo que alguns esperam, ele ainda oferece uma luta interessante. Aqui, o maior perigo será quando seus olhos brilherem e ele puxar a Espada Grande, praticamente 90% dos ataques desferidos em Adam pela frente resultarão em um parry e contra-ataque, por tanto tente sempre ataca-lo pelas costas, ou caso atacar na frente, aguarde bem a oportunidade e conserve estamina. Minha recomendação é usar a Espada Grande nessa luta, e lembre-se, mata-lo encerra a run, então se certifique de ter obtido todos os possíveis troféus dele.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="levin-undok">
+                <h3>Levin Undok</h3>
+                <ul>
+                    <li><strong>Out Like a Light</strong> (Bronze): Seja atingido por um lustre enquanto luta com Levin Undok
+                        <ul>
+                            <li>Depois que você matar um dos dois Levins, o restante ficará mais poderoso e no decorrer desta fase, lustres cairão do teto. Você consegue ver onde vão cair, pois uma luz branca aparecerá no chão, portanto fique dentro da luz e espere ser atingido para obter este troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Dance and Dice</strong> (Bronze): Seja acertado por um machado três vezes enquanto enfrenta Levin Undok
+                        <ul>
+                            <li>Levin Undok iniciará o combate de duas formas: ou com um arremesso de machado, ou invocando adagas flutuantes. Ela também usará esse ataque de arremesso de machado ocasionalmente ao longo da luta. Se ela arremessar o machado, simplesmente fique parado e deixe-se ser atingido 3 vezes para conseguir o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Dance of the Flying Daggers</strong> (Bronze): Destrua 3 adagas voadoras enquanto enfrenta Levin Undok
+                        <ul>
+                            <li>Levin Undok iniciará o combate de duas formas: ou com um arremesso de machado, ou invocando adagas flutuantes. Caso ela conjure as adagas, basta acertá-las com uma lança elétrica. Ao fazer isso, as adagas serão destruídas e o troféu será desbloqueado. Às vezes, é possível que nem todas as adagas sejam destruídas. Nesse caso, fica a seu critério esperar que ela repita o ataque ou morrer para tentar de novo no início da luta.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Graceful Dancer</strong> (Bronze): Desvie da Dança Dupla de Levin Undok
+                        <ul>
+                            <li>Mais tarde na luta, quando você estiver enfrentando tanto Levin Undok quanto Levin Indok juntos, eles realizarão um ataque combinado: ambos girarão em círculos, lançando raios em todas as direções. Para ganhar o troféu, você não pode tomar dano durante a dança, então, a estratégia é ficar o mais longe possível sempre que eles começarem a girar e permanecer intocável até o fim da mesma.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Fury</strong> (Bronze): Leve Levin Undok ao Extremo
+                        <ul>
+                            <li>Esse troféu consiste em aplicar dano o suficiente em Levin Indok (VESTIDO DOURADO) para que a mesma invoque Levin Undok (VESTIDO PRATEADO) sem que aconteça a mudança de forma – indicada pela troca de cabeças – que geralmente ocorre na metade da vida do chefe. A estratégia aqui é tentar ficar na lateral esquerda dela e aplicar o máximo de dano possível – usar Espada e Escudo – até o troféu ser liberado, o que deve acontecer se o chefe (VESTIDO DOURADO) chegar a 30% de vida aproximadamente sem ocorrer a troca de forma.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Party Crasher</strong> (Bronze): Impeça a Dança Dupla de Levin Undok
+                        <ul>
+                            <li>Para este troféu, você precisa derrotar um dos Levin antes que eles realizem sua "dança" (aquela onde ambos giram por toda a arena lançando raios). Sua melhor aposta será focar todos os seus ataques em Levin Indok (a de vestido dourado), ignorando Levin Undok (a de vestido prateado), até que a Indok seja derrotada e a "dança" não possa ocorrer. Se quiser, pode combinar esse troféu com o troféu Fury.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Envious Levin Undok</strong> (Bronze) - <span class="historia">HISTÓRIA</span>: Derrote Levin Undok
+                        <ul>
+                            <li>Ao contrário dos outros Pecados, nesta luta você terá que derrotar dois chefes, sendo que um deles fica mais forte ao absorver os poderes do outro quando este é derrotado (Ornstein e Smough da Shoppe). Durante a primeira fase, elas trocam de posição em intervalos regulares. No entanto, sempre que uma delas atingir metade da vida, ela invocará a outra, e você terá que enfrentar ambas ao mesmo tempo. Minha recomendação é focar na de vestido dourado, pois é a maior perigosa e com os ataques mais chatos. A de vestido prateado tem ataques simples e fáceis de desviar, mesmo ficando mais poderosa no final.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="yordo">
+                <h3>Yordo</h3>
+                <ul>
+                    <li><strong>Denied</strong> (Bronze): Evite a Investida enquanto luta com Yordo e seus guardas.
+                        <ul>
+                            <li>Ocasionalmente durante a luta, Yordo irá para o centro da arena e coordenará seus guardas para que realizarem ataques de Investida contra o jogador, de forma similar à maneira de lutar dos Espartanos. Para ganhar o troféu, basta desviar de todas essas Investidas até que o ataque cesse completamente.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Against the Round</strong> (Bronze): Evite ser morto pelo ataque de Cerco do Yordo
+                        <ul>
+                            <li>Sempre que ouvir o som de uma buzina, prepare-se: todos os guardas de Yordo vão avançar e tentar cercar você. Você pode começar a correr no exato momento em que ouvir o som para evitar ser encurralado. Assim que o ataque terminar, o troféu deve aparecer.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Break Ranks</strong> (Bronze): Quebre a guarda dos Guardas de Yordo
+                        <ul>
+                            <li>Em determinado momento da luta, Yordo irá comandar seus guardas para formarem um circulo de escudos em volta dele – similar os Vikings. Para obter o troféu, basta lançar uma Lança Elétrica na formação, desbandando-os.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Aim for the King</strong> (Bronze) - <span class="bug-positivo">BUGADO</span>: Mate Yordo sem atacar seus guardas
+                        <ul>
+                            <li>Este troféu ou está bugado, ou está com a descrição errada. Para obtê-lo, basta derrotar Yordo com a mira (lock-on) travada nele durante toda a luta. Contanto que você não mude o alvo do **R3** para ninguém além do chefe, mesmo que acidentalmente acerte um guarda, o troféu será seu. Lembre-se que movimentar o analógico **R3** – mesmo que não o pressione – trocará de alvo, anulando o troféu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Outnumbered</strong> (Bronze): Morra cercado pelos guardas de Yordo
+                        <ul>
+                            <li>Eu peguei esse troféu acidentalmente, portanto usarei a dica disponível no TrueAchievements.</li>
+                            <ol>
+                                <li>Ataque Yordo até que ele PRIMEIRO invoque seus guardas ao redor dele (aquela formação circular de escudos).</li>
+                                <li>Após essa formação, os guardas desaparecerão.</li>
+                                <li>Continue atacando Yordo.</li>
+                                <li>Na segunda vez que Yordo invocar os guardas, ele os fará aparecer ao seu redor, vindo de vários ângulos e tentando te perfurar com lanças. ESTE É O MOMENTO: não faça absolutamente nada além de se deixar morrer.</li>
+                            </ol>
+                            <li>É fundamental que Yordo use essa habilidade específica de invocar os guardas ao seu redor para que o troféu seja desbloqueado. Simplesmente morrer cercado em combate aleatório não funcionará. Dica importante: Você deve morrer do ataque de carga inicial da lança. Se você morrer enquanto estiver no chão de ataques subsequentes (após a primeira investida), o troféu não será concedido. Como mencionado, eu peguei o troféu acidentalmente, portanto estou usando as dicas de outros jogadores nesse troféu em específico.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Slothful Yordo</strong> (Prata) - <span class="historia">HISTÓRIA</span>: Derrote Yordo
+                        <ul>
+                            <li>A luta contra Yordo é bastante movimentada: Yordo mesmo tentará evitar você a todo custo e fugirá sempre que for atingido. Afinal, ele tem um exército para lutar por ele! Mas não se preocupe, ele tende a ser um dos chefes mais fáceis do jogo. A estratégia aqui é evitar os guardas, e forçar Yordo a ataca-lo – Avançando dele sempre que os guardas estiverem distantes – e então acertar um parry + crítico. Com a vida abaixo da metade, Yordo ficará agressivo e começará a avançar no jogador. Aqui o esquema é o mesmo, parry + crítico.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <section id="consideracoes-finais">
+            <h2>Considerações Finais</h2>
+            <p>Bom, se você seguiu tudo certinho até aqui, deve estar com uma platina nova na ID. Peço que, caso encontre algum erro, ou forma mais fácil de obter troféus, me avise que vamos aprimorando o guia juntos, afinal, é o meu primeiro guia e estou aprendendo como faz. No mais obrigado por me acompanhar até aqui.</p>
+        </section>
+
+        <section id="referencias">
+            <h2>Referências</h2>
+            <ul>
+                <li><a href="https://www.trueachievements.com/game/Sinner-Sacrifice-for-Redemption/achievements" target="_blank">https://www.trueachievements.com/game/Sinner-Sacrifice-for-Redemption/achievements</a></li>
+                <li><a href="https://psnprofiles.com/guide/13466-sinner-sacrifice-for-redemption-trophy-guide" target="_blank">https://psnprofiles.com/guide/13466-sinner-sacrifice-for-redemption-trophy-guide</a></li>
+            </ul>
+        </section>
+
+        <section id="agradecimentos">
+            <h2>Agradecimentos</h2>
+            <p>Um agradecimento em especial ao pessoal do grupo Corporação Guarda-Chuva. Sem vocês a existência desse guia não seria possível. Um abraço a todos, amo vocês (alguns menos que outros). ❤️</p>
+        </section>
+    </main>
+</body>
+</html>
